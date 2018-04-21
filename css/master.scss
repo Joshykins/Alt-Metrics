@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$primary-font: 'Roboto', sans-serif;
 body {
+    font-family: $primary-font;
     background: #396afc;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2948ff, #396afc);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2948ff, #396afc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -9,14 +12,14 @@ body {
     background: -webkit-linear-gradient(to right, #2948ff, #396afc);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2948ff, #396afc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     max-width:576px;
-    margin: 100px auto 0  auto;
+    margin:  100px auto 0  auto;
     box-sizing:border-box;
-    border: 5px solid rgba(255,255,255,.5);
+    border: 5px solid rgba(255,255,255,1);
     border-radius: 15px;
     padding:15px;
     h1 {
         text-align:center;
-        font-family:open-sans;
+        font-family:$primary-font;
         color:White;
     }
     .inputContainer {
@@ -53,5 +56,17 @@ body {
                 }
             }
         }
+    }
+}
+.content {
+    width: 50%;
+    margin: 100px auto auto auto;
+    text-align: center;
+    h1 {
+        color: white;
+    }
+    p {
+        color: white;
+        padding-bottom: 5px;
     }
 }
