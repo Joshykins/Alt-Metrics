@@ -12,4 +12,20 @@
 
 // 1 BirdPower = 65Watt/s
 // BirdOutput
+<<<<<<< Updated upstream
 // http://ib.oregonstate.edu/~warrickd/dialetal97.pdf
+=======
+// http://ib.oregonstate.edu/~warrickd/dialetal97.pdf
+
+//
+//
+//
+const toWats = {
+    HPtoWats: (x) => {return x * 745.7},
+    KWtoWats: (x) => {return x * 1000}
+}
+const WatsTo = {
+    BirdPower: (x) => {return x * 65},
+    KangarooPower: (x) => {return x * 50}
+}
+>>>>>>> Stashed changes
