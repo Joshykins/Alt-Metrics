@@ -13,7 +13,3 @@
 // 1 BirdPower = 65Watt/s
 // BirdOutput
 // http://ib.oregonstate.edu/~warrickd/dialetal97.pdf
-
-//
-//
-//
