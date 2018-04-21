@@ -12,20 +12,28 @@
 
 // 1 BirdPower = 65Watt/s
 // BirdOutput
-<<<<<<< Updated upstream
+
 // http://ib.oregonstate.edu/~warrickd/dialetal97.pdf
-=======
 // http://ib.oregonstate.edu/~warrickd/dialetal97.pdf
 
 //
 //
 //
+const primaryInput = document.getElementById('firstValue');
+const secondaryInput = document.getElementById('secondValue');
+const primaryOption = document.getElementById('primaryOption')
+const secondaryOption = document.getElementById('secondaryOption')
+
 const toWats = {
-    HPtoWats: (x) => {return x * 745.7},
-    KWtoWats: (x) => {return x * 1000}
-}
+    HP: (x) => {return x * 745.7},
+    KW: (x) => {return x * 1000}
+};
 const WatsTo = {
+    HP: (x) => {return x * 0.00134102},
     BirdPower: (x) => {return x * 65},
     KangarooPower: (x) => {return x * 50}
+};
+
+function CalculateToDom(){
+    secondaryInput.value = WatsTo.HP(primaryInput.value)
 }
->>>>>>> Stashed changes
