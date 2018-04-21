@@ -28,12 +28,89 @@ const toWats = {
     HP: (x) => {return x * 745.7},
     KW: (x) => {return x * 1000}
 };
-const WatsTo = {
+const watsTo = {
     HP: (x) => {return x * 0.00134102},
     BirdPower: (x) => {return x * 65},
     KangarooPower: (x) => {return x * 50}
 };
 
-function CalculateToDom(){
-    secondaryInput.value = WatsTo.HP(primaryInput.value)
+
+
+document.addEventListener('DOMContentLoaded',function() {
+    secondaryInput.onchange = changeEventSecondary;
+    secondaryOption.onchange = changeEventSecondary;
+    primaryInput.onchange = changeEventPrimary;
+    primaryOption.onchange = changeEventPrimary;
+
+
+},false);
+
+
+
+function changeEventSecondary(e) {    
+    let x = secondaryInput.value;
+    let current = secondaryOption.value;
+    let target = primaryOption.value;
+    let output = primaryInput;
+ 
+    //Conver x to watts
+    switch (current) {
+        case "Watt":
+            x = x;
+        break;
+
+        case "Horsepower":
+            x = toWats.HP(x);
+        break;
+    }
+
+    switch (target) {
+        case "Watt":
+        x = x;
+        break;
+
+        case "Horsepower":
+        x = watsTo.HP(x);
+    }
+    x = round(x, 4);
+    primaryInput.value = x;
+    //convert x to target value
+}
+
+
+function changeEventPrimary(e) {    
+    let x = primaryInput.value;
+    let current = primaryOption.value;
+    let target = secondaryOption.value;
+    let output = secondaryInput;
+ 
+    //Conver x to watts
+    switch (current) {
+        case "Watt":
+            x = x;
+        break;
+
+        case "Horsepower":
+            x = toWats.HP(x);
+        break;
+    }
+
+    switch (target) {
+        case "Watt":
+        x = x;
+        break;
+
+        case "Horsepower":
+        x = watsTo.HP(x);
+    }
+    x = round(x, 4);
+    secondaryInput.value = x;
+    //convert x to target value
+}
+
+
+
+function round(num, places) {
+    var multiplier = Math.pow(10, places);
+    return Math.round(num * multiplier) / multiplier;
 }
