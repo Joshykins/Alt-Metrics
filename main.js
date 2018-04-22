@@ -24,61 +24,34 @@ const secondaryInput = document.getElementById('secondValue');
 const primaryOption = document.getElementById('primaryOption')
 const secondaryOption = document.getElementById('secondaryOption')
 
-const toWats = {
+const toWatts = {
     HP: (x) => {return x * 745.7},
-    KW: (x) => {return x * 1000}
+    KW: (x) => {return x * 1000},
+    KangarooPower: (x) => {return x * 50},
+    BirdPower: (x) => {return x * 25},
+
 };
-const watsTo = {
+const wattsTo = {
     HP: (x) => {return x * 0.00134102},
-    BirdPower: (x) => {return x * 65},
-    KangarooPower: (x) => {return x * 50}
+    KW: (x) => {return x / 1000},
+    BirdPower: (x) => {return x / 25},
+    KangarooPower: (x) => {return x / 50}
+
 };
 
 
 
 document.addEventListener('DOMContentLoaded',function() {
-    secondaryInput.onchange = changeEventSecondary;
-    secondaryOption.onchange = changeEventSecondary;
-    primaryInput.onchange = changeEventPrimary;
-    primaryOption.onchange = changeEventPrimary;
+    secondaryInput.onchange = changeEvent;
+    secondaryOption.onchange =  changeEvent;
+    primaryInput.onchange = changeEvent;
+    primaryOption.onchange = changeEvent;
 
 
 },false);
 
 
-
-function changeEventSecondary(e) {    
-    let x = secondaryInput.value;
-    let current = secondaryOption.value;
-    let target = primaryOption.value;
-    let output = primaryInput;
- 
-    //Conver x to watts
-    switch (current) {
-        case "Watt":
-            x = x;
-        break;
-
-        case "Horsepower":
-            x = toWats.HP(x);
-        break;
-    }
-
-    switch (target) {
-        case "Watt":
-        x = x;
-        break;
-
-        case "Horsepower":
-        x = watsTo.HP(x);
-    }
-    x = round(x, 4);
-    primaryInput.value = x;
-    //convert x to target value
-}
-
-
-function changeEventPrimary(e) {    
+function changeEvent(e) {    
     let x = primaryInput.value;
     let current = primaryOption.value;
     let target = secondaryOption.value;
@@ -91,17 +64,34 @@ function changeEventPrimary(e) {
         break;
 
         case "Horsepower":
-            x = toWats.HP(x);
+            x = toWatts.HP(x);
+        break;
+
+        case "Kangaroopower":
+            x = toWatts.KangarooPower(x);
+        break;
+
+        case "Birdpower":
+            x=toWatts.BirdPower(x);
         break;
     }
 
     switch (target) {
         case "Watt":
-        x = x;
+            x = x;
         break;
 
         case "Horsepower":
-        x = watsTo.HP(x);
+            x = wattsTo.HP(x);
+        break;
+
+        case "Kangaroopower":
+            x = wattsTo.KangarooPower(x);
+        break;
+        case "Birdpower":
+            x=wattsTo.BirdPower(x);
+        break;
+
     }
     x = round(x, 4);
     secondaryInput.value = x;
